@@ -1,4 +1,4 @@
-package fr.uvsq.Etudiant-UVSQ;
+package fr.uvsq.EtudiantUVSQ;
 
 import static org.junit.Assert.assertTrue;
 

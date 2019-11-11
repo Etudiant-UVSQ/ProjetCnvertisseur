@@ -1,8 +1,7 @@
-package fr.uvsq.Etudiant-UVSQ;
+package fr.uvsq.EtudiantUVSQ;
 
-import banque.exceptions.DecouvertException;
-import banque.exceptions.MontantNegatifException;
-import banque.src.CompteBancaire;
+import fr.uvsq.EtudiantUVSQ.Exceptions.*;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;

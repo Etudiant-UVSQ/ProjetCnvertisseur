@@ -1,6 +1,6 @@
-package fr.uvsq.Etudiant-UVSQ;
+package fr.uvsq.EtudiantUVSQ;
 
-import banque.exceptions.*;
+import fr.uvsq.EtudiantUVSQ.Exceptions.*;
 
 public class CompteBancaire {
 	

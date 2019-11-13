@@ -21,13 +21,13 @@
 	
 	  <reporting>
 	    <plugins>
-	      <plugin>
-	        <groupId>org.apache.maven.plugins</groupId>
-	        <artifactId>maven-javadoc-plugin</artifactId>
-	        <version>3.1.1</version>
-	        <configuration>
-	        </configuration>
-	      </plugin>
+		      <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-javadoc-plugin</artifactId>
+		        <version>3.1.1</version>
+		        <configuration>
+		        </configuration>
+		      </plugin>
 	           <plugin>
 			          <groupId>org.apache.maven.plugins</groupId>
 			          <artifactId>maven-checkstyle-plugin</artifactId>
@@ -40,16 +40,17 @@
 			            </reportSet>
 			          </reportSets>
 	           </plugin>
-	        <plugin>
-		        <groupId>org.codehaus.mojo</groupId>
-		        <artifactId>findbugs-maven-plugin</artifactId>
-		        <version>3.0.6-SNAPSHOT</version>
-		        <configuration>
-		          <xmlOutput>true</xmlOutput>
-		          <!-- Optional directory to put findbugs xdoc xml report -->
-		          <xmlOutputDirectory>target/site</xmlOutputDirectory>
-		        </configuration>
-             </plugin>
+		        <plugin>
+			        <groupId>org.codehaus.mojo</groupId>
+			        <artifactId>findbugs-maven-plugin</artifactId>
+			        <version>3.0.6-SNAPSHOT</version>
+			        <configuration>
+			          <xmlOutput>true</xmlOutput>
+			          <!-- Optional directory to put findbugs xdoc xml report -->
+			          <xmlOutputDirectory>target/site</xmlOutputDirectory>
+			        </configuration>
+	             </plugin>
+	             
 	    </plugins>
 	  </reporting>
   <dependencies>
@@ -79,6 +80,10 @@
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
+          <configuration>
+		      <fork>true</fork>
+		      <executable>C:\Program Files\Java\jdk1.8.0_221\bin\javac.exe</executable>
+		   </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>

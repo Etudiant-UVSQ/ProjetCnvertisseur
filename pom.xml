@@ -17,31 +17,7 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
-	
-	
-	  <reporting>
-	    <plugins>
-	      <plugin>
-	        <groupId>org.apache.maven.plugins</groupId>
-	        <artifactId>maven-javadoc-plugin</artifactId>
-	        <version>3.0.0-M1</version>
-	        <configuration>
-	        </configuration>
-	      </plugin>
-	          <plugin>
-	          <groupId>org.apache.maven.plugins</groupId>
-	          <artifactId>maven-checkstyle-plugin</artifactId>
-	          <version>2.17</version>
-	          <reportSets>
-	            <reportSet>
-	              <reports>
-	                <report>checkstyle</report>
-	              </reports>
-	            </reportSet>
-	          </reportSets>
-	        </plugin>
-	    </plugins>
-	  </reporting>
+
   <dependencies>
 
     <dependency>
@@ -50,7 +26,79 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-javadoc-plugin</artifactId>
+      <version>3.1.1</version>
+      <type>maven-plugin</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-checkstyle-plugin</artifactId>
+      <version>3.1.0</version>
+      <type>maven-plugin</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>findbugs-maven-plugin</artifactId>
+      <version>3.0.5</version>
+      <type>maven-plugin</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-jar-plugin</artifactId>
+      <version>3.2.0</version>
+      <type>maven-plugin</type>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-utils</artifactId>
+      <version>1.1</version>
+    </dependency>
   </dependencies>
+
+	  <reporting>
+	    <plugins>
+	      <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.1.1</version>
+	      </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <version>3.1.0</version>
+            <reportSets>
+              <reportSet>
+                <reports>
+                  <report>checkstyle</report>
+                </reports>
+              </reportSet>
+            </reportSets>
+          </plugin>
+
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>findbugs-maven-plugin</artifactId>
+            <version>3.0.5</version>
+              <configuration>
+                  <xmlOutput>true</xmlOutput>
+
+                  <xmlOutputDirectory>target/site</xmlOutputDirectory>
+              </configuration>
+          </plugin>
+	    </plugins>
+	  </reporting>
+
 
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
@@ -74,8 +122,16 @@
           <version>2.22.1</version>
         </plugin>
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
+          <configuration>
+            <archive>
+              <manifest>
+                <addClasspath>true</addClasspath>
+                <mainClass>fr.uvsq.EtudiantUVSQ.CompteBancaireTest</mainClass>
+              </manifest>
+            </archive>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
@@ -93,6 +149,23 @@
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
+        </plugin>
+
+
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>3.2.1</version>
+
+          <executions>
+            <execution>
+              <phase>package</phase>
+              <goals>
+                <goal>shade</goal>
+              </goals>
+            </execution>
+          </executions>
         </plugin>
       </plugins>
     </pluginManagement>
